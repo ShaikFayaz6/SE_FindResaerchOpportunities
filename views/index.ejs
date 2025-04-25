@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title> Reasearch Finder </title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Jost', sans-serif;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+        }
+        .main {
+            width: 350px;
+            height: 530px;
+            background: red;
+            overflow: hidden;
+            background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/cover;
+            border-radius: 10px;
+            box-shadow: 5px 20px 50px #000;
+        }
+        .chk {
+            display: none;
+        }
+        .signup {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        label {
+            color: #fff;
+            font-size: 2.3em;
+            justify-content: center;
+            display: flex;
+            margin: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: .5s ease-in-out;
+        }
+        input {
+            width: 60%;
+            height: 10px;
+            background: #e0dede;
+            justify-content: center;
+            display: flex;
+            margin: 20px auto;
+            padding: 12px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+        button {
+            width: 60%;
+            height: 40px;
+            margin: 10px auto;
+            justify-content: center;
+            display: block;
+            color: #fff;
+            background: #573b8a;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 30px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            transition: .2s ease-in;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #6d44b8;
+        }
+
+        .readContentButton {
+            display: hidden;
+        }
+
+        .dropd {
+            width: 40%;
+            height: 30px;
+            margin: 10px auto;
+            justify-content: center;
+            display: block;
+            color: #000000;
+            background: #ffffff;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 30px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            transition: .2s ease-in;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 100;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .login {
+            height: 460px;
+            background: #eee;
+            border-radius: 60% / 10%;
+            transform: translateY(-180px);
+            transition: .8s ease-in-out;
+        }
+        .login label {
+            color: #573b8a;
+            transform: scale(.6);
+        }
+
+        .chk:checked ~ .login {
+            transform: translateY(-500px);
+        }
+        .chk:checked ~ .login label {
+            transform: scale(1);    
+        }
+        .chk:checked ~ .signup label {
+            transform: scale(.6);
+        }
+
+        #startVoiceNav {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main" id="readContent">      
+        <input type="checkbox" class="chk" id="chk-signup">
+        <input type="checkbox" class="chk" id="chk-login">
+
+
+        <div class="signup">
+            <form action="/register" method="post">
+                <label for="chk-signup" aria-hidden="true">Sign up</label>
+                <span id="emailLabelSignUP" class="sr-only">Enter your Email</span>
+                
+                <label class="sr-only" for="emailsignup">Email</label>
+                <input type="email" id="emailsignup" name="email" placeholder="Email" aria-label="Email ID" required="">
+                
+                <!-- Add id to password field -->
+                <span id="passwordLabelSignUp" class="sr-only">Enter Password</span>
+                <label class="sr-only" for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password" aria-label="Password" required minlength="6">
+                
+                <span id="confirmPasswordLabel" class="sr-only">Confirm Password</span>
+                <label class="sr-only" for="confirmPassword">Confirm Password</label>
+                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" aria-label="confirm password" required minlength="6" oninput="checkPasswords()">
+
+                <label class="sr-only" for="selectrole"> select role</label>
+                <select aria-label="role" name="role" class="dropd" id="selectrole" required>
+                    <option value="" disabled selected class="content">Select your role</option>
+                    <option value="admin" >Researcher</option>
+                    <option value="client" >Student</option>
+                </select>
+
+                <span id="signUpLabel" class="sr-only">Sign up for an account</span>
+                <button type="submit" tabindex="-1" aria-hidden="true">Sign up</button>
+            </form>
+        </div>
+
+        <div class="login">
+            <form action="/login" method="post">
+                <label for="chk-login" aria-hidden="true">Login</label>
+
+                <span id="emailLabelLogin" class="sr-only">Enter your Login Email</span>
+                <label class="sr-only" for="emaillogin">Email</label>
+                <input type="email" id="emaillogin" name="email" placeholder="Email" aria-label="Email ID" required="">
+
+                <span id="passwordLabelLogin" class="sr-only">Enter your Password</span>
+                <label class="sr-only" for="passwordlogin">Password</label>
+                <input type="password" id="passwordlogin" name="password" placeholder="Password" aria-label="password" required="">
+
+                <span id="loginLabel" class="sr-only">Login Button</span>
+                <button tabindex="-1" aria-hidden="true">Login</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        function checkPasswords() {
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirmPassword");
+
+            // Check if passwords match
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Passwords do not match");  // Set custom validation message
+            } else {
+                confirmPassword.setCustomValidity("");  // Clear validation message if passwords match
+            }
+        }
+    </script>    
+</body>
+</html>

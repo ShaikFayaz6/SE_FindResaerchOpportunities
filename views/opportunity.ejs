@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <title>Post opportunity</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <style>
+    /* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+.light-theme {
+    --sidebar-background: #005f99;
+    --logo-detailscolor: #ffffff;
+    --navlinks-i: #ffffff; 
+    --linkname-color: #ffffff;
+    --submenu-a: #ffffff;
+    --theme-main: #ffffff;
+    --profile-details: #004080;
+    --theme-color: #4a90e2;
+    --border-color: #4a90e2;
+    --background-hover: #5bb3e6;
+    --home-background: #e3eff8;
+    --option-text: #004080;
+    --container-background: #f5f9fc;
+    --product-text: #4e4e4e;
+    --product-shadow: 0px 0px 20px 13px #a0b3d6;
+    --container-shadow: 7px 9px 16px 0px #a0b3d6;
+    --home-header-bg: #cfebff;
+    --text-area-input: #f5f9fc;
+}
+
+.dark-theme {
+    --sidebar-background: #181825;          /* Dark navy, slightly desaturated for a softer look */
+    --logo-detailscolor: #599bdc;           /* Muted blue to give a softer contrast */
+    --navlinks-i: #d1d5db;                  /* Light gray for easier readability */
+    --linkname-color: #c9ced7;              /* Light gray for link text */
+    --submenu-a: #d0d7e5;                   /* Softer gray for submenu items */
+    --theme-main: #0f0f14;                  /* Deep dark blue */
+    --profile-details: #1d2437;             /* Darker blue for profile background */
+    --theme-color: #5aa7e5;                 /* Brighter blue for primary accents */
+    --border-color: #445a7a;                /* Muted blue-gray for borders */
+    --background-hover: #3a9be6;            /* Lighter shade of blue for hover states */
+    --home-background: #191925;             /* Slightly lighter than main background */
+    --option-text: #5ba9f2;                 /* Vibrant blue for selectable options */
+    --container-background: #232336;        /* Dark gray with a hint of blue */
+    --product-text: #f1f1f1;                /* Near-white for readability */
+    --product-shadow: 0px 0px 15px 8px #020212; /* Softer shadow for products */
+    --container-shadow: 5px 7px 14px 0px #020212; /* Slightly softened shadow */
+    --home-header-bg: #13131e;              /* Dark gray-blue for header background */
+    --text-area-input: #1d1d2b;             /* Darker gray-blue for text input */
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--home-background);
+}
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: rgb(130, 106, 251);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #272727;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--theme-color);
+}
+.form button:hover {
+  background: var(--background-hover);
+}
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+  </style>
+  <body>
+    <section class="container">
+      <header  data-translate="true" >Add Opportunity</header>
+      <form action="/post-opportunity" method="post" class="form">
+        <div class="input-box">
+          <label data-translate="true" >Title:</label>
+          <input aria-label="title" data-translate="true" type="text" placeholder="Enter Title" name="title" required />
+        </div>
+
+        <div class="input-box">
+          <label data-translate="true" >Research Topic</label>
+          <input aria-label="topic name" data-translate="true" type="text" placeholder="Enter Topic" name="topic" required />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label data-translate="true" >Stipend</label>
+            <input aria-label="stipend" data-translate="true" type="number" placeholder="Stipend per month" name="stipend" required />
+          </div>
+          <div class="input-box">
+            <label data-translate="true" >Duration</label>
+            <input aria-label="duration" data-translate="true" type="number" placeholder="Duration in months" name="duration" required />
+          </div>
+        </div>
+
+
+        <div class="column">
+            <div class="input-box">
+              <label data-translate="true" >Work-mode</label>
+              <div class="select-box">
+                <select aria-label="mode" name="mode" required>
+                  <option  data-translate="true" hidden>Work Mode</option>
+                  <option data-translate="true" >hybrid</option>
+                  <option data-translate="true" >remote</option>
+                  <option data-translate="true" >on-site</option>
+                </select>
+            </div>
+            <div class="input-box">
+              <label data-translate="true" >Work-type</label>
+                <div class="select-box">
+                  <select aria-label="type" name="type" required>
+                    <option hidden data-translate="true" >Work Type</option>
+                    <option data-translate="true" >internship</option>
+                    <option data-translate="true" >part-time</option>
+                    <option data-translate="true" >full-time</option>
+                  </select>
+            </div>
+          </div>
+
+        
+
+        <!-- <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" checked />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="input-box address">
+          <label data-translate="true" >Description</label>
+          <input aria-label="short description" data-translate="true" type="text" placeholder="Short Description" name="shortDescription" required />
+          <input aria-label="long description" data-translate="true" type="text" placeholder="Long Description" name="longDescription" required />
+          <!-- <div class="column">
+            <div class="select-box">
+              <select>
+                <option hidden>Country</option>
+                <option>America</option>
+                <option>Japan</option>
+                <option>India</option>
+                <option>Nepal</option>
+              </select>
+            </div>
+            <input type="text" placeholder="Enter your city" required />
+          </div>
+          <div class="column">
+            <input type="text" placeholder="Enter your region" required />
+            <input type="text" placeholder="Enter postal code" required />
+          </div> -->
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label data-translate="true" >Institution</label>
+            <input aria-label="college" data-translate="true" type="text" placeholder="Company / College" name="institution" required />
+          </div>
+          <div class="input-box">
+            <label data-translate="true" >Location</label>
+            <input aria-label="location" data-translate="true"  type="text" placeholder="Location" name="location" required />
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label data-translate="true" >Reference Link</label>
+          <input aria-label="link" data-translate="true"  type="text" placeholder="" name="link" required />
+        </div>
+
+        <div class="input-box">
+          <label data-translate="true" >Tags</label>
+          <input aria-label="tags" data-translate="true" type="text" placeholder="Tags (comma separated)" name="tags" required />
+        </div>
+
+        <button data-translate="true" >Post Opportunity</button>
+      </form>
+    </section>
+
+    <script>
+        const body = document.body;
+
+        document.addEventListener("DOMContentLoaded", () => {
+          fetch('/get-theme')
+            .then(response => response.json())
+            .then(data => {
+              const theme = data.theme;
+              if (theme === 'dark-theme') {
+                body.classList.add('dark-theme');
+              } else {
+                body.classList.add('light-theme');
+              }
+            })
+            .catch(error => console.error('Error fetching theme:', error));
+        });
+    </script>
+    <script type="module" src="translation.mjs"></script>
+    <script src="languages.js" ></script>
+
+  </body>
+</html>

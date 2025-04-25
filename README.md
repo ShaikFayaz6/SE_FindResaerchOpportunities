@@ -1,2 +1,2 @@
-# SE_FindResaerchOpportunities
-A tool to Find Resaerch Opportunities
+# EurekaTribe
+inclusive website for disabled to provide interface for available research opportunities
